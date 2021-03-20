@@ -1,0 +1,15 @@
+-Set Up ASW to store video into CDN
+-Create get event highlights route
+-search query at ./routes/query/q
+-Set error logging
+-Use lorem picsum for test images
+-https://uigradients.com/
+- Use talkjs for messaging in front end : Hence remove jama_messages property ;docs(https://talkjs.com/docs/)
+-Try to change calendar feature 
+- Use circuit breakers like netflix's hystrix only on external api services like messaging and upload to cloud
+- data replication
+- event sourcing for booking events
+-Setup and change aws cloud variables 'src/libs/modules/storage/vars.ts' and CDNs
+- Setup a transaction system with on of the ghana  transaction services
+- Set payment  notification src/libs/modules/worker/schedule-notification/index.d.ts
+- Setup notifications

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sparc Billings</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container" style="margin-top:50px;">
+    <div class="panel panel-default mb-5">
+      <div class="panel-heading bg-white">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <img src="https://s3.amazonaws.com/cdn.sparc.world/email/assets/logos/sparc_bg_white.png" alt="logo"
+              style="width: 150px;">
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-6 mb-3">
+          <div class="panel panel-default" style="height: 250px;">
+            <div class="panel-heading">
+              Sparc
+            </div>
+            <div class="panel-body">
+              <address>
+                <strong>Sparc The World LLC</strong> <br>
+                1209 North Orange <br>
+                Wilmington, Delaware 19801-1120<br>
+                Phone: +1 (646) 397-8006<br>
+                Email: Billing@Sparc.World
+              </address>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3 text-right">
+          <div class="panel panel-default" style="height: 250px;">
+            <div class="panel-heading">
+              Client
+            </div>
+            <div class="panel-body">
+              <address>
+                <strong>${data.user.fullName}<br></strong>
+                ${data.user.email}<br>
+                ${data.user.phone}<br>
+              </address>
+            </div>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</td>
+              <th>Payment Service</th>
+              <th>Payment Scope</th>
+              <th>Date</th>
+              <th>Name</th>
+              <th class="text-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${(() => {
+              let content = ''
+              for (const bill of data.billsRows) {
+                content += '<tr>'
+                for (const field of bill) {
+                  content += `<td>${field}</td>`
+                }
+                content += '</tr>'
+              }
+
+              return content
+            })()}
+          </tbody>
+        </table>
+        <div class="row justify-content-end" style="margin-top:50px;">
+          <div class="col-md-6">
+            Currency: USD <br>
+            Issued at: ${new Date().toLocaleDateString()}<br>
+            Issued by: Sparc The World LLC<br>
+          </div>
+          <div class="col-md-6">
+            <table class="table borderless">
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-right">TOTAL</th>
+                  <th class="text-right">$${data.total}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer" style="height: 12rem;">
+        <div class="col-md-12 text-center">
+          <img src="https://s3.amazonaws.com/cdn.sparc.world/email/assets/logos/logo_sparctheworld.png" alt="logo"
+            style="width: 100px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    .col-md-6 {
+      display: inline-block;
+      width: 50% !important;
+      margin: 0;
+      float: left;
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .bg-white{
+      background-color: white !important;
+    }
+  </style>
+</body>
+
+</html>

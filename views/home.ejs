@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
+
+    <title>Jama</title>
+    <style>
+        
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+        }
+        nav{
+            background-color: #f0e9cc;
+            padding: 10px 5px;
+            overflow: hidden;
+
+        }
+        .sticky{
+            position:fixed;
+            top: 0;
+            width: 100%;
+            opacity: 0.8;
+        }
+        nav ul{
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 0;
+            min-height: 55px;
+        }
+        nav li {
+            list-style-type: none;
+            display: inline-block;
+            margin:0 10px 0 0;
+        }
+        nav a {
+            text-align: center;
+            color: #8501cc;
+            font-size: 1.1rem;
+            background-color: #ffd932;
+            text-decoration: none;
+            padding: 8px;
+            float: left;
+        }
+        .hompage{
+            background-color: #faf8f000;
+            padding: 0 !important;
+            margin: 8px 0 0 0 !important;
+            font-family: 'Akaya Kanadaka', cursive;
+            font-size: 1.4em;
+            vertical-align: middle;
+        }
+        .nav-left{
+            justify-content: center;
+            float: right;
+            padding: auto;
+            margin-top: 8px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        .btn-nav{
+            min-width: 60px;
+            text-align: center;
+        }
+        .btn-nav-primary{
+            background-color: #8501cc00;
+            border: #f7db5f solid;
+            color: #f7db5f;
+        }
+        .btn-nav-primary:hover{
+            background-color: #f5eabb;
+            border: #f7db5f solid;
+            color: #fff4c2;
+        } 
+        .btn-nav-secondary{
+            background-color: #8501cc;
+            border: #8501cc solid;
+            color: #f5eabb;
+        }
+        .btn-nav-secondary:hover{
+            background-color: #f5eabb00;
+            border: #8501cc solid;
+            color: #8501cc;
+        }
+        .sticky + main {
+            padding-top: 60px;
+        }
+        main {
+            max-width : 95%;
+            margin:30px auto;
+            margin: 0 10px;
+            color: #8501cc;
+            background-color: #f5eabb;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a class="hompage" href="/home"><h1 style="margin: 0 !important;">JAMA</h1></a></li>
+            
+            <div class="nav-left">
+                <% if ( isAuthenticated ) {%>
+                    <li><a class="btn btn-nav btn-nav-primary" href="/auth/logout">Logout</a></li>
+                <% } else { %>
+                <li><a class="btn btn-nav btn-nav-primary" href="/auth/auth0">LogIn</a></li>
+                <li><a class="btn btn-nav btn-nav-secondary" href="/auth/auth0">Sign Up</a></li>
+                <% } %>
+            </div>
+                
+        </ul>
+    </nav>
+    <main>
+        <p>Best place to find events in Ghana Near you</p>
+    </main>
+    <script>
+        window.onscroll = function() {stickyFunction()};
+
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
+
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function stickyFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+        }
+    </script>
+</body>
+</html>
