@@ -4,12 +4,14 @@
 
 # Routes
 > Auth
+
      - auth/auth0/ : Auth0 authentication route
      - auth/auth0/callback : Redirect link after auth is verified by auth0
      - auth/login : Login Page
      - auth/logout: Logout Route
 
 > Users
+
     + Admin
         -GET admin/get/attended-events: Get all authententicated user's attended events, Params(none)
         -GET admin/get/hosted-events: Get all authententicated user's hosted events, Params(none)
