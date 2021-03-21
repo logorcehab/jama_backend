@@ -8,6 +8,7 @@ import passportConfig from './configs/passport'
 import routes from './routes'
 import passport from 'passport'
 import session from 'express-session'
+import cors from 'cors'
 dotenv.config()
 
 
@@ -43,8 +44,12 @@ if (app.get('env') === 'production') {
     // app.set('trust proxy', 1);
 }
 app.use(json());
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(session(sess));
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 
