@@ -18,9 +18,7 @@ export interface IEvent {
     event_video: string;
     host_contact: string;
     location_instructions: string;
-    register_timestamps: {
-        [key: string]: string;
-    };
+    register_timestamps: string[];
     settings: {
         displayed_components: {
             message_host: boolean;
@@ -31,15 +29,17 @@ export interface IEvent {
     timestamp_end: number;
     rated_by: string[];
     rated_guests: string[];
-    users_attending: {
-        [key: string]: string;
-    };
+    users_attending: string[];
     pending_payment: {
-        [key: string]: string;
-    };
+        _id: string;
+        uid: string;
+        amount: string;
+    }[];
     pending_payment_confirmation: {
-        [key: string]: string;
-    };
+        _id: string;
+        uid: string;
+        amount: string;
+    }[];
     locations: {
         accepted?: string;
         default?: string;
@@ -97,8 +97,12 @@ const Event: Schema = new Schema({
     timestamp_end: Number,
     rated_by: [],
     rated_guests: [],
-    users_attending: Object,
-    pending_payment: Object,
+    users_attending: [String],
+    pending_payment: [{
+        _id: String,
+        uid: String,
+        amount: String,
+    }],
     pending_payment_confirmation: Object,
     locations: {
         accepted: String,

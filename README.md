@@ -65,3 +65,11 @@
         -GET ratings/get/id/:id: Get a hosts ratings by id. Param(id: hosts id)
     +Tooltip
         -GET /tooltip/:userId: Get user basic public info. Param(userId: users Id)
+
+> Analytics
+
+    + Views
+        -GET events/get/all/:id: Get all event views. Param(id: event id)
+        -GET events/get/today/id/:id: Get today event views. Param(id: event id)
+        -GET events/get/week/id/:id: Get week event views. Param(id: event id)
+        -GET events/get/total/id/:id: Get total event views. Param(id: event id)

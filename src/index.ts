@@ -54,7 +54,6 @@ app.use(passport.session());
 passportConfig()
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
-  console.log(res.locals.user)
   next();
 });
 app.use('/', routes)
