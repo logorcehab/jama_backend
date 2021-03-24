@@ -17,8 +17,8 @@ export default async function main(firstName: string, lastName:string) {
     async function generateRandomUsername(firstName1: string, lastName1: string): Promise<string> {
         const baseUsername = `${firstName1.toLowerCase()}.${lastName1.toLowerCase()}`;
         const randomToken = Math.floor((Math.random() * 1000) + 1);
-        const usernameOption = `${baseUsername}.${randomToken}`;
-        const searchResult = await Models.User.findOne({username});
+        const usernameOption = `${baseUsername}${randomToken}`;
+        const searchResult = await Models.User.findOne({usernameOption});
         if (searchResult)
             return generateRandomUsername(firstName1,lastName1);
         return usernameOption;

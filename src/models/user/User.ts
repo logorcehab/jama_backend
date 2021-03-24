@@ -25,6 +25,7 @@ export interface IUser {
     last_name: string;
     username: string
     auth_id: string
+    password: string;
     auth_provider: string
     number_of_followers: number;
     number_of_followed: number;
@@ -112,7 +113,7 @@ export interface IUser {
     account_blocked: boolean;
 }
 
-const User: Schema = new Schema({
+const User = new Schema({
 
     email: String,
     first_name: String,
@@ -120,6 +121,7 @@ const User: Schema = new Schema({
     username: String,
     auth_id: String,
     auth_provider: String,
+    password: String,
     number_of_followers: Number,
     number_of_followed: Number,
     followed_by: [String],
