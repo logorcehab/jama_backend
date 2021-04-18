@@ -32,13 +32,13 @@ router.get('/month', async (req, res, next) => {
       const day: {
         date: number
         weekDay: number
-        schedule: Array<{
+        schedule: {
           event: Partial<IEvent>
           host: {
             name: string
             _id: string
           }
-        }>
+        }[]
       } = {
         date: calendarDayIndex,
         weekDay: new Date(year, month, calendarDayIndex).getDay(),

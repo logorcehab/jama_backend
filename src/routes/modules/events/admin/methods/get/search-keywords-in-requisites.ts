@@ -83,7 +83,7 @@ router.get('/:eventId/search-keywords-in-requisite-files/:keywords', async (req,
   if (filter === 'confirmed-attendance') {
     const attendanceDocument = await Models.EventAttendance.findById(eventId, 'confirmed') || { confirmed: [] }
 
-    const confirmedUsersIds: Array<string> = attendanceDocument.confirmed
+    const confirmedUsersIds: string[] = attendanceDocument.confirmed
 
     registrantsObjects = registrantsObjects.filter(el => confirmedUsersIds.includes(el._id))
   }

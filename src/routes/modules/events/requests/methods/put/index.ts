@@ -255,7 +255,7 @@ router.put('/waitlist', async (req, res, next) => {
       return res.status(403).json({ error: e })
     }
     let label
-    const types: Array<keyof IEvent> = ['pending_virtual', 'pending_inperson', 'users_attending', 'virtual_attending']
+    const types: (keyof IEvent)[] = ['pending_virtual', 'pending_inperson', 'users_attending', 'virtual_attending']
     for (const t of types) {
       if (event[t] && event[t][target.id]) {
         label = t

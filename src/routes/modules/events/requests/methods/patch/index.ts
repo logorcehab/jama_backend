@@ -53,7 +53,7 @@ router.patch('/shiftrejected', async (req, res, next) => {
     label: '',
     type: 'inperson'
   }
-  const labels: Array<keyof IEvent> = ['rejected_virtual', 'rejected_inperson']
+  const labels: (keyof IEvent)[] = ['rejected_virtual', 'rejected_inperson']
   for (const label of labels) {
     if (event[label]) {
       const requests = event[label]

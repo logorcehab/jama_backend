@@ -144,7 +144,7 @@ async function middleware(req: Request, res: Response) {
 
   if (filter === 'confirmed-attendance') {
     const attendanceDocument = await Models.EventAttendance.findById(eventId, 'confirmed') || { confirmed: [] }
-    const confirmedUsersIds: Array<string> = attendanceDocument.confirmed
+    const confirmedUsersIds: string[] = attendanceDocument.confirmed
 
     registrantsObjects = registrantsObjects.filter(el => confirmedUsersIds.includes(el._id))
   }
@@ -165,7 +165,7 @@ async function middleware(req: Request, res: Response) {
     }
   }
   // Collect data
-  const fieldsToCollectFromUser: Array<keyof typeof registrants[0]> = ['first_name', 'last_name', 'ethnicity', 'gender', 'current_city', 'email', 'institute', 'headline']
+  const fieldsToCollectFromUser: (keyof typeof registrants[0])[] = ['first_name', 'last_name', 'ethnicity', 'gender', 'current_city', 'email', 'institute', 'headline']
   const guests = registrants.map(user => {
     const data: {
       [key: string]: any

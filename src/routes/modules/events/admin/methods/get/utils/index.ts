@@ -4,7 +4,7 @@ import https from 'https'
 function getBufferFromUrl(url: string): Promise<Buffer> {
   return new Promise((r, j) => {
     https.get(url, (res) => {
-      const data: Array<Buffer> = []
+      const data: Buffer[] = []
 
       res.on('data', (chunk) => {
         data.push(chunk as Buffer)

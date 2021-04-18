@@ -17,7 +17,7 @@ router.patch('/:eventId/:prop/:propValue', async (req, res, next) => {
   const authId = res.locals.user
   const { prop, eventId, propValue } = req.params
 
-  const allowedProps: Array<keyof IEvent> = [
+  const allowedProps: (keyof IEvent)[] = [
     'waitlist_enabled',
     'display_phone',
     'requires_confirmation'
@@ -136,7 +136,7 @@ router.patch('/details/:eventId', async (req, res, next) => {
     location_instructions: {
       virtual: b.location_instructions ? String(b.location_instructions.virtual) : undefined
     },
-    tags: b.tags as Array<string>
+    tags: b.tags as string[]
   }
   // Validate
   const rules = {
@@ -160,7 +160,7 @@ router.patch('/details/:eventId', async (req, res, next) => {
   payload.event_name = payload.event_name.replace(/^\s+/mg, '')
 
   // Validate every tag
-  async function validateTagsArray(tagsArray: Array<string> = []) {
+  async function validateTagsArray(tagsArray: string[] = []) {
     const tagsQueue = []
     for (const tagId of tagsArray) {
       const task = Models.Tag.findById(tagId)

@@ -24,7 +24,7 @@ router.delete('/cancel/:id/', async (req, res, next) => {
   }
 
   // Find request id
-  const validTypes: Array<keyof IEvent> = ['virtual_attending', 'users_attending', 'pending_virtual', 'pending_inperson']
+  const validTypes: (keyof IEvent)[] = ['virtual_attending', 'users_attending', 'pending_virtual', 'pending_inperson']
   let requestId = null
   let type = null
   for (const requestType of validTypes) {

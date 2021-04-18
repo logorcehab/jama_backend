@@ -1,4 +1,4 @@
-const routes: Array<string> = [
+const routes: string[] = [
   'register',
   'contact',
   'login',

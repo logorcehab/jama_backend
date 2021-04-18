@@ -118,7 +118,7 @@ router.get('/hosted-events', async (req, res, next) => {
 
     let registrants_count = 0
 
-    const registrantsCategories: Array<keyof IEvent> = [
+    const registrantsCategories: (keyof IEvent)[] = [
       'users_attending', 'virtual_attending', 'pending_virtual', 'pending_inperson', 'rejected_virtual', 'rejected_inperson', 'pending_payment_virtual', 'pending_payment_inperson'
     ]
 
@@ -203,8 +203,8 @@ router.get('/registrants/:eventId', async (req, res, next) => {
   } catch (e) {
     return next(e)
   }
-  const registrants: Array<IRegistrant> = []
-  const waitlist: Array<IWaitlistRegistrant> = []
+  const registrants: IRegistrant[] = []
+  const waitlist: IWaitlistRegistrant[] = []
   const rawRegistrants = []
   if (event.pending_inperson) {
     for (const requestId in event.pending_inperson) {
@@ -460,7 +460,7 @@ interface IResponse {
 router.get('/requisite-files/filter/:event/:keywords', async (req, res, next) => {
   const uid = res.locals.user
   const target = req.params.event
-  let keywords: Array<string> = []
+  let keywords: string[] = []
   try {
     keywords = JSON.parse(req.params.keywords)
   } catch (e) {

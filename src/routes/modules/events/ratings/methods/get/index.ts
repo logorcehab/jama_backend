@@ -28,12 +28,10 @@ router.get('/id/:id', async (req, res, next) => {
       return res.status(200).json({ ratings: [] })
     }
 
-    const ratings: Array<
-      IUserRating['host'][0]
+    const ratings: (IUserRating['host'][0]
       & {
         author?: Partial<IUser>
-      }
-    > = userHostRatings.filter(rating => rating.event_id === event._id)
+      })[] = userHostRatings.filter(rating => rating.event_id === event._id)
     if (ratings.length === 0) {
       return res.status(200).json({ ratings: [] })
     }

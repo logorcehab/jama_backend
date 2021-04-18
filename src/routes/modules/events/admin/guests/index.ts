@@ -25,7 +25,7 @@ router.post('/post/bulk-message/:eventId', uploader({ limits: { files: 5 } }), a
     return res.status(400).json({ error: e })
   }
 
-  let attachments: Array<UploadedFile> = []
+  let attachments: UploadedFile[] = []
   if (req.files) {
     attachments = Array.isArray(req.files.attachments)
       ? req.files.attachments.slice(0, 5) : [req.files.attachments]
@@ -52,7 +52,7 @@ router.post('/post/bulk-message/:eventId', uploader({ limits: { files: 5 } }), a
   }
 
   const { message } = b
-  let dest: Array<string> = []
+  let dest: string[] = []
   try {
     dest = JSON.parse(b.dest)
   } catch (e) {

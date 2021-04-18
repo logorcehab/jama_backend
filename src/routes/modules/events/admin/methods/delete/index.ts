@@ -196,7 +196,7 @@ router.delete('/id/:id', uploader(), async (req, res, next) => {
       await Models.Event.findByIdAndRemove(target)
       // Remove interested users
       if (eventData.interested) {
-        const tasks: Array<Promise<any>> = []
+        const tasks: Promise<any>[] = []
         for (const rawId of Object.keys(eventData.interested)) {
           const userId = String(rawId)
           tasks.push(removeUserInterest(userId, eventData._id))

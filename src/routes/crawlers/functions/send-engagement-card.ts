@@ -237,7 +237,7 @@ async function sendEngagementCard(
   }
 
   const metaTypes: {
-    [key: string]: Array<string>
+    [key: string]: string[]
   } = {
     title: [
       'title', 'og:title', 'twitter:title'

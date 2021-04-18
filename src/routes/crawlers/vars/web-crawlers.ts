@@ -1,6 +1,6 @@
 // https://www.keycdn.com/blog/web-crawlers
 interface IWebCrawlersCollection {
-  [key: string]: Array<string>
+  [key: string]: string[]
 }
 
 const webCrawlers: IWebCrawlersCollection = {
@@ -50,7 +50,7 @@ const sharePreviewCrawlers: IWebCrawlersCollection = {
 
 const exportable: {
   [key: string]: {
-    [key: string]: Array<string>
+    [key: string]: string[]
   }
 } = {
   webCrawlers,

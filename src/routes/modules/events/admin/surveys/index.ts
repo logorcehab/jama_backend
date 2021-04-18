@@ -162,10 +162,10 @@ router.get('/id/:surveyId', async (req, res, next) => {
     responses: undefined
   }
 
-  const formattedResponses: Array<{
-    responses: Array<string>
+  const formattedResponses: {
+    responses: string[]
     user: Partial<IUser>
-  }> = []
+  }[] = []
 
   for (const responseObject of responses) {
     const { user_id: userId, responses: userResponses } = responseObject
@@ -221,7 +221,7 @@ router.get('/by-event/:eventId', async (req, res, next) => {
 
       if (!survey) continue
 
-      const requiredProps: Array<keyof IEventSurvey> = ['title', '_id', 'completed_by']
+      const requiredProps: (keyof IEventSurvey)[] = ['title', '_id', 'completed_by']
       const finalSurvey: {
         [key: string]: any
       } = {}

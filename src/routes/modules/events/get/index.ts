@@ -292,8 +292,8 @@ router.get('/id/:id', authentification, async (req, res, next) => {
   }
 
   // Collect event data
-  const requiredProps: Array<keyof IEvent> = ['capacity', 'event_image', 'event_video', 'attachments', 'waitlist_enabled', 'waitlist_auto', 'cause', 'charity', 'created_by', 'timestamp_start', 'timestamp_end', 'event_description', 'event_name', 'price', 'event_type', '_id', 'registration_requisite', 'registration_file', 'registration_form', 'requires_confirmation', 'tags', 'settings']
-  const hostRequiredProps: Array<keyof IUser> = ['_id', 'first_name', 'last_name', 'following', 'followed_by', 'host_rating', 'control_panel', 'recruiter_confirmed', 'profile_image', 'recruiter_logo', 'website', 'facebook', 'instagram', 'twitter', 'linkedin']
+  const requiredProps: (keyof IEvent)[] = ['capacity', 'event_image', 'event_video', 'attachments', 'waitlist_enabled', 'waitlist_auto', 'cause', 'charity', 'created_by', 'timestamp_start', 'timestamp_end', 'event_description', 'event_name', 'price', 'event_type', '_id', 'registration_requisite', 'registration_file', 'registration_form', 'requires_confirmation', 'tags', 'settings']
+  const hostRequiredProps: (keyof IUser)[] = ['_id', 'first_name', 'last_name', 'following', 'followed_by', 'host_rating', 'control_panel', 'recruiter_confirmed', 'profile_image', 'recruiter_logo', 'website', 'facebook', 'instagram', 'twitter', 'linkedin']
 
   const responseEvent: {
     host: Partial<IUserDocument>

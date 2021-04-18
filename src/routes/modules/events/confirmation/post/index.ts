@@ -54,7 +54,7 @@ router.post('/participant/:eventId/:userId', async (req, res, next) => {
       return res.status(404).json({ error: 'Event not found' })
     }
 
-    const confirmedUsers: Array<string> = eventAttendance.confirmed
+    const confirmedUsers: string[] = eventAttendance.confirmed
     const alreadyAccepted = confirmedUsers.includes(authId)
     if (alreadyAccepted) {
       return res.status(401).json({ error: 'You have already confirmed your participation' })

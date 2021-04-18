@@ -43,7 +43,7 @@ router.get('/:eventId', async (req, res, next) => {
 
   function findUserRequestId(userId: string): string {
     if (!event) return ''
-    const labels: Array<keyof IEvent> = ['users_attending', 'virtual_attending']
+    const labels: (keyof IEvent)[] = ['users_attending', 'virtual_attending']
     let finalRequestId = ''
     for (const label of labels) {
       if (!Object.prototype.hasOwnProperty.call(event, label)) continue
@@ -73,7 +73,7 @@ router.get('/:eventId', async (req, res, next) => {
       const user = await Models.User.findById(userId)
       if (!user) continue
 
-      const requiredProps: Array<keyof IUser> = ['_id', 'profile_image', 'first_name', 'last_name', 'current_city', 'control_panel', 'headline']
+      const requiredProps: (keyof IUser)[] = ['_id', 'profile_image', 'first_name', 'last_name', 'current_city', 'control_panel', 'headline']
 
       const finalUser: { request_id: string } & { [P in keyof IUser]?: any } = {
         request_id: ''
