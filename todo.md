@@ -1,4 +1,4 @@
--Set Up ASW to store video into CDN
+-Set Up ASW to store video into Cdn
 -Create get event highlights route
 -search query at ./routes/query/q
 -Set error logging
